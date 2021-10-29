@@ -34,7 +34,7 @@ client.on("message", async message => {
     stop(message, serverQueue);
     return;
   } else {
-    message.channel.send("You need to enter a valid command!");
+    message.channel.send("Você precisa inserir um comando válido doidão!");
   }
 });
 
@@ -44,12 +44,12 @@ async function execute(message, serverQueue) {
   const voiceChannel = message.member.voice.channel;
   if (!voiceChannel)
     return message.channel.send(
-      "You need to be in a voice channel to play music!"
+      "Você precisa estar em um canal de voz para tocar música!"
     );
   const permissions = voiceChannel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
     return message.channel.send(
-      "I need the permissions to join and speak in your voice channel!"
+      "Preciso de permissão para entrar e falar no seu canal de voz!"
     );
   }
 
@@ -91,17 +91,17 @@ async function execute(message, serverQueue) {
 function skip(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "You have to be in a voice channel to stop the music!"
+      "Você tem que estar em um canal de voz para parar a música!"
     );
   if (!serverQueue)
-    return message.channel.send("There is no song that I could skip!");
+    return message.channel.send("Tem música pra  pular não doidão!");
   serverQueue.connection.dispatcher.end();
 }
 
 function stop(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "You have to be in a voice channel to stop the music!"
+      "Você tem que estar em um canal de voz para parar a música!"
     );
   serverQueue.songs = [];
   serverQueue.connection.dispatcher.end();
